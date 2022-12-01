@@ -115,7 +115,7 @@ def run_model_out(X: np.array, y: np.array, X_out: np.array, y_out: np.array, al
     return np.mean(r2), y_hest, model
 
 
-def plot_predictions(y: np.array, yhat: np.array, r2: float, country: str, year: str, n: int, max_y=None, x_label = False):
+def plot_predictions(y: np.array, yhat: np.array, r2: float, country: str, year: str, max_y=None, x_label = False):
     """
     Util for plot predictions
 
@@ -144,13 +144,12 @@ def plot_predictions(y: np.array, yhat: np.array, r2: float, country: str, year:
     ax.spines['top'].set_color('none')
 
     plt.xlabel('Observed consumption($/day)', fontsize=14)
-    if n == 0 or x_label:
-        plt.ylabel('Predicted consumption($/day)', fontsize=14)
+    plt.ylabel('Predicted consumption($/day)', fontsize=14)
     plt.title(fr'$r^2$ {round(r2, 2)}', fontsize=14, loc='left')
     plt.suptitle(f'{country} {year}', ha="left", x=0.119, y=0.95, fontsize=18)
     plt.grid(alpha=1)
-    ax.text(-0.1, 1.1, string.ascii_uppercase[n],
-            size=20, weight='bold', transform=ax.transAxes)
+    #ax.text(-0.1, 1.1, string.ascii_uppercase[n],
+    #        size=20, weight='bold', transform=ax.transAxes)
 
     return fig
 
